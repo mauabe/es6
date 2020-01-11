@@ -1,0 +1,74 @@
+<html>
+
+
+<head>
+<title>Let and Const</title>
+</head>
+<body>
+<script>
+
+//let  & const are block scoped
+//var is function scoped.
+
+
+  var width = 100;
+  let height = 200;
+  const key = 'abc123';
+
+  function setWidth(){
+    var width = 100;
+    console.log(width);
+  }
+  setWidth();
+
+  var age = 100;
+  if(age >12){
+      var dogYears = age * 7;
+      console.log(`You are ${dogYears} dog years old!!!`)
+  }
+
+  const person = {
+    name: 'mauricio',
+    age: 7
+  };
+
+  person.age = 9;
+
+  const newMe = Object.freeze(person); //this object can no longer be changed.
+
+  const anotherMe = {};
+  Object.assign(anotherMe, newMe)  //copy properties from one or more sources into a target
+  console.log('anotherMe is now:', anotherMe);
+
+
+
+// IIFE SCOPING
+
+(function(){
+  var name = 'stella'
+  console.log('IIFE scoped variable:', name);
+})();
+
+
+{
+  const name = 'Luiza';
+  console.log('block scoped name: ', name)
+}
+
+for(var i = 0; i < 10; i++){
+  console.log (i);
+  setTimeout(function(){
+    console.log('the "var"number is ', i);
+  }, 1000);
+}
+
+for(let i = 0; i < 10; i++){
+  console.log (i);
+  setTimeout(function(){
+    console.log('the "let" number is ', i);
+  }, 1000);
+}
+
+</script>
+</body>
+</html>
